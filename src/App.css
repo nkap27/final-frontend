@@ -1,26 +1,107 @@
-.App {
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
+  /* box-sizing: border-box; */
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+a { text-decoration: none }
 
 .App-link {
   color: #61dafb;
 }
+
+.folder {
+  background-color: powderblue;
+  width: 120px;
+  margin-bottom: 10px;
+  padding: 15px;
+}
+
+.logo {
+  font-size: 60px;
+  font-family: 'Muli', sans-serif;
+  color: black;
+  padding: 10px;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-button {
+  font-family: 'Lato', sans-serif;
+  color: #999;
+  border: none;
+  padding: 14px;
+  font-size: 16px;
+  text-decoration: none;
+  outline: none;
+}
+
+.nav-button:hover {
+  color: #111;
+}
+
+.navlink {
+  text-decoration: none;
+  border: none;
+}
+
+/* .pins-container {
+  display: flex;
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: center;
+} */
+
+.pic-list {
+  height: 2000px;
+  padding-left: 60px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  text-align: center;
+}
+
+
+
+h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.item {
+  display: flex;
+  background-color: white;
+  margin: 20px;
+  width: 350px;
+  height: auto;
+}
+
+.photo {
+  opacity: .75;
+  -webkit-transform: scale(1.03);
+  transform: scale(1.03);
+}
+
+.photo:hover {
+  opacity: 1;
+  -webkit-transform: scale(1.10);
+  transform: scale(1.10);
+  -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: transform 0.5s, opacity 0.5s;
+  transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
+  box-shadow:
+}
+
 
 @keyframes App-logo-spin {
   from {
