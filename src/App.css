@@ -102,6 +102,11 @@ h3 {
   box-shadow:
 }
 
+.pinned-image {
+  width: 600px;
+  height: 400px;
+}
+
 
 @keyframes App-logo-spin {
   from {

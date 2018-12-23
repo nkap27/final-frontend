@@ -1,12 +1,14 @@
 const BASE_URL = 'http://localhost:3000/api/v1'
 
 const Login = 'login'
+const FeatureFolder = 'folders/featured'
 
 export default class Adapter {
   parseHeaders = response => response.json()
 
   // fetchEndpoint = (endPoint) => fetch(`${BASE_URL}/${endPoint}`)
   //                             .then(this.parseHeaders)
+
 
   loginUser = (username) => (
     fetch(`${BASE_URL}/${Login}`, {
@@ -22,6 +24,16 @@ export default class Adapter {
       })
     }).then(this.parseHeaders)
   )
+
+  loadFeatureFolder = () => (
+    fetch(`${BASE_URL}/${FeatureFolder}`).then(this.parseHeaders)
+  )
+
+
+
+
+
+
 }
 
 // Adapter.loginUser(username)

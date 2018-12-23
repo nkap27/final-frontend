@@ -1,15 +1,15 @@
-import PinsList from '../components/PinsList';
+import TiledPics from '../components/TiledPics';
 import React from 'react';
 // import { connect } from 'react-redux';
 
-const PinsContainer = (props) => {
+const AlbumsContainer = (props) => {
 
   // console.log('props for pins container', props.pics)
 
   return (
     <div className="pins-container">
       <h3>ALBUM</h3>
-      <PinsList pics={props.pics}/>
+      <TiledPics pics={props.pics}/>
     </div>
   )
 }
@@ -18,4 +18,4 @@ const PinsContainer = (props) => {
 //   return { pinnedPics: state.pinnedPictures }
 // }
 
-export default PinsContainer
+export default AlbumsContainer

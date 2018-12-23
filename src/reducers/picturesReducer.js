@@ -1,17 +1,20 @@
 import { ADD_ITEM } from '../types';
+import { LOAD_FEATURE_FOLDER } from '../types';
 
 const defaultState = {
-  allFeaturedPics: [{image_url: 'https://s3.ca-central-1.amazonaws.com/crushproject/DSCF3838.JPG', name: 'Bolivia', featured: false}, {name: 'Bolivia', image_url: 'https://s3.ca-central-1.amazonaws.com/crushproject/DSCF3873.JPG', featured: true}],
   pinnedPictures: [{image_url: 'https://s3.ca-central-1.amazonaws.com/crushproject/DSCF4025.JPG'}, {image_url: 'https://s3.ca-central-1.amazonaws.com/crushproject/DSCF4414.JPG'}]
 }
 
-const pinsReducer = (state=defaultState, action) => {
+const picturesReducer = (state=defaultState, action) => {
+  // console.log(action)
   switch (action.type) {
     case ADD_ITEM:
       return {...state, pinnedPictures: [...state.pinnedPictures, action.payload]}
+    case LOAD_FEATURE_FOLDER:
+      return {...state, featureFolder: action.payload }
     default:
       return state
   }
 }
 
-export default pinsReducer
+export default picturesReducer

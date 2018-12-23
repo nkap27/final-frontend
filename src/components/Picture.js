@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Pins = (props) => {
+const Picture = (props) => {
   console.log('PIN',props)
 
   return (
@@ -10,4 +10,4 @@ const Pins = (props) => {
   )
 }
 
-export default Pins
+export default Picture
