@@ -2,6 +2,7 @@ const BASE_URL = 'http://localhost:3000/api/v1'
 
 const Login = 'login'
 const FeatureFolder = 'folders/featured'
+const Pictures = 'pictures'
 
 export default class Adapter {
   parseHeaders = response => response.json()
@@ -27,6 +28,10 @@ export default class Adapter {
 
   loadFeatureFolder = () => (
     fetch(`${BASE_URL}/${FeatureFolder}`).then(this.parseHeaders)
+  )
+
+  fetchPicture = (pictureId) => (
+    fetch(`${BASE_URL}/${Pictures}/${pictureId}`).then(this.parseHeaders)
   )
 
 

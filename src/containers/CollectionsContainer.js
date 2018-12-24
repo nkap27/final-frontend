@@ -2,15 +2,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PictureTile from '../components/PictureTile';
+import Picture from '../components/Picture';
 
 class CollectionsContainer extends React.Component {
 
   state = {
-    folderId: null
+    folderId: null,
+    pictureId: null
   }
 
   displayFolders = () => {
-    console.log(this.props.folders)
+    // console.log(this.props.folders)
     return this.props.folders.map(folder =>
       <div
         onClick={this.handleFolderId}
@@ -23,7 +25,11 @@ class CollectionsContainer extends React.Component {
 
   handleFolderId = (event) => {
     // console.log(event.target.id)
-    return this.setState({ folderId: parseInt(event.target.id) })
+    return this.setState({ folderId: parseInt(event.target.id), pictureId: null })
+  }
+
+  selectPictureId = (event) => {
+    return this.setState({ pictureId: parseInt(event.target.id), folderId: null })
   }
 
   displayPictures = () => {
@@ -31,17 +37,24 @@ class CollectionsContainer extends React.Component {
       if(currPicture.folder_id === this.state.folderId) {
         return folderPictures;
       }
-      return folderPictures.concat(<PictureTile image_url={currPicture.image_url}/>)
+      return folderPictures.concat(<PictureTile key={currPicture.id} selectPictureId={this.selectPictureId} {...currPicture}/>)
     }, []);
   }
 
+  displayPicture = () => {
+    const pictureObj = this.props.pictures.find(picture => picture.id === this.state.pictureId)
+    return <Picture {...pictureObj}/>
+  }
+
+
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div className="pins-container">
-      <h3>ALBUM</h3>
-      {this.displayFolders()}
-      {this.state.folderId ? this.displayPictures() : null}
+        <h3>ALBUM</h3>
+        {!this.state.pictureId ? this.displayFolders() : null}
+        {this.state.folderId && !this.state.pictureId ? this.displayPictures() : null}
+        {this.state.pictureId ? this.displayPicture() : null}
       </div>
     )
   }

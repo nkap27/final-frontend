@@ -1,11 +1,11 @@
 import React from 'react'
 
 const PictureTile = (props) => {
-  // console.log('PIN',props)
+  // console.log(props)
 
   return (
     <div>
-      <img className="item photo" src={props.image_url} alt="" />
+      <img className="item photo" onClick={props.selectPictureId} src={props.image_url} id={props.id} alt={props.topic} />
     </div>
   )
 }
