@@ -2,23 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import { Redirect } from 'react-router';
 import { Route, Switch } from 'react-router-dom';
-import AlbumsContainer from './containers/AlbumsContainer';
+import CollectionsContainer from './containers/CollectionsContainer';
 import NavBar from './components/NavBar';
 import HomeContainer from './containers/HomeContainer';
-
-// const BASE_URL = 'http://localhost:3000/api/v1/users'
+import Login from './components/Login';
 
 class App extends Component {
-  //
-  // state = {
-  //   usersData: null,
-  // }
-
-  // componentDidMount() {
-  //   fetch(BASE_URL)
-  //   .then(resp => resp.json())
-  //   .then(data => this.setState({ usersData: data[0] },()=>console.log(data[0])))
-  // }
 
   render() {
     // console.log(this.props.state.getState())
@@ -27,8 +16,9 @@ class App extends Component {
         <NavBar />
         <Switch>
           <Redirect exact path="/" to="/home"/>
-          <Route exact path= '/home' component={HomeContainer} />
-          <Route exact path="/pins" component={AlbumsContainer}  />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/home" component={HomeContainer} />
+          <Route exact path="/collections" component={CollectionsContainer} />
         </Switch>
       </div>
     );

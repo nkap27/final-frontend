@@ -1,13 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const Picture = (props) => {
-  console.log('PIN',props)
-
-  return (
-    <div>
-      <img className="item photo" src={props.image_url} alt="" />
-    </div>
-  )
-}
+class Picture extends React.Component(
+  render(){
+    return(
+      <div>hey</div>
+    )
+  }
+)
 
 export default Picture
