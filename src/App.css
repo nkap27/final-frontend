@@ -11,6 +11,10 @@ a { text-decoration: none }
 }
 
 .folder {
+  margin-top: 30px;
+}
+
+.folder-titles {
   background-color: powderblue;
   width: 120px;
   margin-bottom: 10px;
@@ -22,6 +26,11 @@ a { text-decoration: none }
   font-family: 'Muli', sans-serif;
   color: black;
   padding: 10px;
+}
+
+.solo-pic-display {
+  margin-left: 80px;
+  margin-top: 50px;
 }
 
 .navbar {

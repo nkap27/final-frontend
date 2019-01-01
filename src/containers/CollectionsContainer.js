@@ -12,19 +12,21 @@ class CollectionsContainer extends React.Component {
   }
 
   displayFolders = () => {
-    // console.log(this.props.folders)
+    // console.log('DISPLAY FOLDER', this.props.folders)
     return this.props.folders.map(folder =>
-      <div
+      <div className="folder-titles"
         onClick={this.handleFolderId}
         key={folder.id}
         id={folder.id}
       >
-        {folder.title}
+        <h3>{folder.title}</h3>
+        <h5>{folder.location}</h5>
       </div>)
   }
 
   handleFolderId = (event) => {
-    // console.log(event.target.id)
+    // console.log('HANDLING FOLDER ID', event.target.id)
+    // console.log(this.props.pictures)
     return this.setState({ folderId: parseInt(event.target.id), pictureId: null })
   }
 
@@ -43,15 +45,15 @@ class CollectionsContainer extends React.Component {
 
   displayPicture = () => {
     const pictureObj = this.props.pictures.find(picture => picture.id === this.state.pictureId)
-    return <Picture {...pictureObj}/>
+    return <Picture pictureObj={pictureObj}/>
   }
 
 
   render() {
-    // console.log(this.state)
+    // console.log('state',this.state)
     return (
       <div className="pins-container">
-        <h3>ALBUM</h3>
+        {this.state.pictureId ? this.props.topic : <h3>ALBUM</h3> }
         {!this.state.pictureId ? this.displayFolders() : null}
         {this.state.folderId && !this.state.pictureId ? this.displayPictures() : null}
         {this.state.pictureId ? this.displayPicture() : null}
