@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PictureTile from '../components/PictureTile';
 import Picture from '../components/Picture';
+import CommentsContainer from './CommentsContainer';
 
 class CollectionsContainer extends React.Component {
 
@@ -44,10 +45,16 @@ class CollectionsContainer extends React.Component {
   }
 
   displayPicture = () => {
+    // console.log('hi hitting display pic')
+    // console.log('picture id', this.state.pictureId)
     const pictureObj = this.props.pictures.find(picture => picture.id === this.state.pictureId)
+    // console.log('pic obj', pictureObj)
     return <Picture pictureObj={pictureObj}/>
   }
 
+  displayComments = () => {
+    return <CommentsContainer pictureId={this.state.pictureId} />
+  }
 
   render() {
     // console.log('state',this.state)
@@ -57,6 +64,7 @@ class CollectionsContainer extends React.Component {
         {!this.state.pictureId ? this.displayFolders() : null}
         {this.state.folderId && !this.state.pictureId ? this.displayPictures() : null}
         {this.state.pictureId ? this.displayPicture() : null}
+        {this.state.pictureId ? this.displayComments() : null}
       </div>
     )
   }
