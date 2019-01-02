@@ -39,6 +39,23 @@ export default class Adapter {
     fetch(`${BASE_URL}/${Comments}`).then(this.parseHeaders)
   )
 
+  postComment = (text, picture_id, user_id) => (
+    fetch(`${BASE_URL}/${Comments}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        comment: {
+          text: text,
+          picture_id: picture_id,
+          user_id: user_id
+        }
+      })
+    }).then(this.parseHeaders)
+  )
+
 }
 
 // Adapter.loginUser(username)

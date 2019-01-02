@@ -9,7 +9,8 @@ class CommentsContainer extends React.Component {
     this.ApiAdapter = new ApiAdapter()
 
     this.state = {
-      comments: []
+      comments: [],
+      text: ''
     }
   }
 
@@ -42,9 +43,17 @@ class CommentsContainer extends React.Component {
 
   }
 
+  handleChange = (e) => this.setState({ [e.target.name]: e.target.value })
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.ApiAdapter.postComment(this.state.text, this.props.pictureId, this.props.userId)
+    .then(data => this.setState({text: '', comments: [...this.state.comments, data]}) )
+  }
+
   render(){
-    console.log('this.props', this.props)
-    console.log('state', this.state)
+    // console.log('this.props', this.props)
+    // console.log('state', this.state)
     // console.log('Clicked photo', this.props)
     // console.log('current pic comments', this.props.pics.currentPicture)
     //the sweet JS syntax par russ
@@ -52,6 +61,13 @@ class CommentsContainer extends React.Component {
     return (
       <Fragment>
         {this.displayComments()}
+        <form onSubmit={this.handleSubmit}>
+          <label>
+          Post Comment:
+          <input value={this.state.value} name="text" onChange={this.handleChange} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
       </Fragment>
     )
   }
