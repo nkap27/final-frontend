@@ -1,8 +1,9 @@
 import React, {Fragment} from 'react';
 import Zoom from 'react-img-zoom';
+import magnify from './zoom-in.svg';
 
 const Picture = (props) => {
-      console.log('picture component props', props)
+    // console.log('picture component props', props)
     const {pictureObj} = props
 
     return (
@@ -16,6 +17,10 @@ const Picture = (props) => {
             zoomScale={2}
             transitionTime={0.2}
           />
+          <div className="hover-container">
+            <p className="hover-text">Hover over picture to zoom.</p>
+            <img className="zoom-icon" src={magnify} alt="" />
+          </div>
         </div>
       </Fragment>
     )

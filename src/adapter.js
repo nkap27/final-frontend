@@ -4,6 +4,7 @@ const Login = 'login'
 const FeatureFolder = 'folders/featured'
 const Pictures = 'pictures'
 const Comments = 'comments'
+const Pins = 'pins'
 
 export default class Adapter {
   parseHeaders = response => response.json()
@@ -51,6 +52,22 @@ export default class Adapter {
           text: text,
           picture_id: picture_id,
           user_id: user_id
+        }
+      })
+    }).then(this.parseHeaders)
+  )
+
+  postPin = (user_id, picture_id) =>  (
+    fetch(`${BASE_URL}/${Pins}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        pin: {
+          user_id: user_id,
+          picture_id: picture_id
         }
       })
     }).then(this.parseHeaders)

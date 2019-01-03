@@ -26,16 +26,20 @@ class CommentsContainer extends React.Component {
     return this.state.comments.map(comment => {
       if(comment.user.id === this.props.userId){
         return (
-          <div key={comment.id}>
-            <div> {this.props.username} </div>
-            <div> {comment.text} </div>
+          <div className="bubble-container">
+            <div className="text-bubble" key={comment.id}>
+              <h4 className="guest-author"> {this.props.username} </h4>
+              <div className="comment-post"> {comment.text} </div>
+            </div>
           </div>
         )
       } else {
         return (
-          <div key={comment.id}>
-            <div> Natasha </div>
-            <div> {comment.text} </div>
+          <div className="bubble-container">
+            <div className="text-bubble" key={comment.id}>
+              <h4 className="admin-author"> photographer </h4>
+              <div className="comment-post"> {comment.text} </div>
+            </div>
           </div>
         )
       }
@@ -48,7 +52,8 @@ class CommentsContainer extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.ApiAdapter.postComment(this.state.text, this.props.pictureId, this.props.userId)
-    .then(data => this.setState({text: '', comments: [...this.state.comments, data]}) )
+    .then(data => this.setState({...this.state, comments: [...this.state.comments, data]}))
+    e.target.reset();
   }
 
   render(){
@@ -60,14 +65,18 @@ class CommentsContainer extends React.Component {
 
     return (
       <Fragment>
-        {this.displayComments()}
-        <form onSubmit={this.handleSubmit}>
-          <label>
-          Post Comment:
-          <input value={this.state.value} name="text" onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Submit" />
+      <div className="comment-form-box">
+        <p className="suggestion-text">Got any suggestions? Drop 'em in here!</p>
+        <div className="display-comments">
+          {this.displayComments()}
+        </div>
+
+        <form className="form" onSubmit={this.handleSubmit}>
+          <textarea className="textarea" placeholder="Leave A Reply" value={this.state.value} name="text" onChange={this.handleChange} />
+          <button className="button" type="submit" value="Submit">COMMENT</button>
         </form>
+      </div>
+
       </Fragment>
     )
   }
