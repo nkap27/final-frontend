@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import users from './usersReducer';
-import pins from './pinsReducer';
+import pics from './picturesReducer';
 
 export default combineReducers({
   users,
-  pins
+  pics
 })
